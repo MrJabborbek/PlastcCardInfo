@@ -1,6 +1,7 @@
 package com.example.myapplication.domain.model
 
 data class CardData(
+    val cardNumber: String = "",
     val bank: Bank,
     val brand: String,
     val country: Country,

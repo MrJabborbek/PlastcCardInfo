@@ -18,15 +18,23 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
 fun MainScreenRoot(
-    viewModel: MainViewModel
+    viewModel: MainViewModel,
+    navigateToHistory: () -> Unit
 ) {
-    val state by viewModel.state.collectAsState()
+    val state by viewModel.state.collectAsStateWithLifecycle()
     MainScreen(
         state = state,
-        onAction = viewModel::onAction
+        onAction = {
+            when(it){
+                MainAction.OnHistoryClicked -> navigateToHistory()
+                else -> Unit
+            }
+            viewModel.onAction(it)
+        }
     )
 }
 
