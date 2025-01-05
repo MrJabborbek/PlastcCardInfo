@@ -68,29 +68,29 @@ fun MainScreen(
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
-                Text(
-                    text = "City: ${cardData.bank.city.takeIf { it.isNotBlank()} ?: "–"}",
-                    fontSize = 16.sp
-                )
+//                Text(
+//                    text = "City: ${cardData.bank.city?.takeIf { it.isNotBlank()} ?: "–"}",
+//                    fontSize = 16.sp
+//                )
                 Text(
                     text = "Name: ${cardData.bank.name.takeIf { it.isNotBlank()} ?: "–"}",
                     fontSize = 16.sp
                 )
-                Text(
-                    text = "Phone: ${cardData.bank.phone.takeIf { it.isNotBlank()} ?: "–"}",
-                    fontSize = 16.sp //TODO
-                )
-                Text(
-                    text = "Url: ${cardData.bank.url.takeIf { it.isNotBlank()} ?: "–"}",
-                    fontSize = 16.sp //TODO
-                )
+//                Text(
+//                    text = "Phone: ${cardData.bank.phone.takeIf { it.isNotBlank()} ?: "–"}",
+//                    fontSize = 16.sp //TODO
+//                )
+//                Text(
+//                    text = "Url: ${cardData.bank.url.takeIf { it.isNotBlank()} ?: "–"}",
+//                    fontSize = 16.sp //TODO
+//                )
 
-                Text(
-                    modifier = Modifier.padding(start = 16.dp, top = 16.dp),
-                    text = "Brand: ${cardData.brand.takeIf { it.isNotBlank()} ?: "–"}",
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold
-                )
+//                Text(
+//                    modifier = Modifier.padding(start = 16.dp, top = 16.dp),
+//                    text = "Brand: ${cardData.brand.takeIf { it.isNotBlank()} ?: "–"}",
+//                    fontSize = 24.sp,
+//                    fontWeight = FontWeight.Bold
+//                )
 
                 Text(
                     modifier = Modifier.padding(start = 16.dp, top = 16.dp),
@@ -132,20 +132,20 @@ fun MainScreen(
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
-                Text(
-                    text = "Length: ${cardData.number.length.takeIf { it != 0 } ?: "–"}",
-                    fontSize = 16.sp
-                )
-                Text(
-                    text = "Luhn: ${cardData.number.luhn.takeIf { it } ?: "–"}",
-                    fontSize = 16.sp
-                )
-                Text(
-                    modifier = Modifier.padding(start = 16.dp, top = 16.dp),
-                    text = "Prepaid: ${cardData.prepaid.takeIf { it } ?: "–"}",
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold
-                )
+//                Text(
+//                    text = "Length: ${cardData.number.length.takeIf { it != 0 } ?: "–"}",
+//                    fontSize = 16.sp
+//                )
+//                Text(
+//                    text = "Luhn: ${cardData.number.luhn.takeIf { it } ?: "–"}",
+//                    fontSize = 16.sp
+//                )
+//                Text(
+//                    modifier = Modifier.padding(start = 16.dp, top = 16.dp),
+//                    text = "Prepaid: ${cardData.prepaid.takeIf { it } ?: "–"}",
+//                    fontSize = 24.sp,
+//                    fontWeight = FontWeight.Bold
+//                )
                 Text(
                     modifier = Modifier.padding(start = 16.dp, top = 16.dp),
                     text = "Scheme: ${cardData.scheme.takeIf { it.isNotBlank()} ?: "–"}",

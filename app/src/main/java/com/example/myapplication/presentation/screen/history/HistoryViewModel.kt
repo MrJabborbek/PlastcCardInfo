@@ -43,6 +43,8 @@ class HistoryViewModel: ViewModel(){
             is HistoryAction.OnHistoryItemClicked -> {
 
             }
+
+            HistoryAction.OnBackClicked ->{}
         }
     }
 }

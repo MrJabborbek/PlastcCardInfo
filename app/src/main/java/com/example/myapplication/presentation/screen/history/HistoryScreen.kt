@@ -54,7 +54,7 @@ fun HistoryScreen(
                 .verticalScroll(rememberScrollState()),
         ) {
             items(items = state.history) { cardData ->
-                Text(text = cardData.cardNumber)
+//                Text(text = cardData.cardNumber)
             }
         }
 
