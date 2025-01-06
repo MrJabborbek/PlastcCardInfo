@@ -7,14 +7,21 @@ import androidx.room.PrimaryKey
 data class HistoryEntity(
     @PrimaryKey
     val cardNumber: String = "",
-    val bankName: String,
-    val alpha2: String,
-    val currency: String,
-    val emoji: String,
-    val latitude: Int,
-    val longitude: Int,
-    val countryName: String,
-    val numeric: String,
-    val scheme: String,
-    val type: String
+    val length: Int? = null,
+    val luhn: Boolean? = null,
+    val scheme: String? = null,
+    val city: String? = null,
+    val countryName: String? = null,
+    val phone: String? = null,
+    val url: String? = null,
+    val brand: String? = null,
+    val alpha2: String? =null,
+    val currency: String? =null,
+    val emoji: String? =null,
+    val latitude: Int? =null,
+    val longitude: Int? =null,
+    val bankName: String? =null,
+    val numeric: String? =null,
+    val prepaid: Boolean? = null,
+    val type: String? = null
 )

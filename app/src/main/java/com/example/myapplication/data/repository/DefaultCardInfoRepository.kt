@@ -21,15 +21,22 @@ class DefaultCardInfoRepository(
             dao.upsert(
                 HistoryEntity(
                     cardNumber = cardData.cardNumber,
-                    bankName = cardData.bank.name,
-                    alpha2 = cardData.country.alpha2,
-                    currency = cardData.country.currency,
-                    emoji = cardData.country.emoji,
-                    latitude = cardData.country.latitude,
-                    longitude = cardData.country.longitude,
-                    countryName = cardData.country.name,
-                    numeric = cardData.country.numeric,
+                    length = cardData.number?.length,
+                    luhn = cardData.number?.luhn,
                     scheme = cardData.scheme,
+                    city = cardData.bank?.city,
+                    countryName = cardData.country?.name,
+                    phone = cardData.bank?.phone,
+                    url = cardData.bank?.url,
+                    brand = cardData.brand,
+                    alpha2 = cardData.country?.alpha2,
+                    currency = cardData.country?.currency,
+                    emoji = cardData.country?.emoji,
+                    latitude = cardData.country?.latitude,
+                    longitude = cardData.country?.longitude,
+                    bankName = cardData.bank?.name,
+                    numeric = cardData.country?.numeric,
+                    prepaid = cardData.prepaid,
                     type = cardData.type
                 )
             )
@@ -47,11 +54,29 @@ class DefaultCardInfoRepository(
                 historyEntities.map { historyEntity ->
                     CardData(
                         cardNumber = historyEntity.cardNumber,
-                        bank= Bank(name=historyEntity.bankName),
-                        country= Country(alpha2=historyEntity.alpha2, currency=historyEntity.currency, emoji=historyEntity.emoji, latitude=historyEntity.latitude, longitude=historyEntity.longitude, name=historyEntity.countryName, numeric=historyEntity.numeric),
-                        number=Number(),
-                        scheme=historyEntity.scheme,
-                        type=historyEntity.type
+                        number = Number(
+                            length = historyEntity.length,
+                            luhn = historyEntity.luhn
+                        ),
+                        scheme = historyEntity.scheme,
+                        bank = Bank(
+                            city = historyEntity.city,
+                            name = historyEntity.bankName,
+                            phone = historyEntity.phone,
+                            url = historyEntity.url
+                        ),
+                        brand = historyEntity.brand,
+                        country = Country(
+                            alpha2 = historyEntity.alpha2,
+                            currency = historyEntity.currency,
+                            emoji = historyEntity.emoji,
+                            latitude = historyEntity.latitude,
+                            longitude = historyEntity.longitude,
+                            name = historyEntity.countryName,
+                            numeric = historyEntity.numeric
+                        ),
+                        prepaid = historyEntity.prepaid,
+                        type = historyEntity.type
                     )
                 }
         }
@@ -62,6 +87,7 @@ class DefaultCardInfoRepository(
     }
 
     override suspend fun getInfoByCard(cardNumber: String): CardData? {
+        if (cardNumber.length < 6) return null
 //        return CardData(
 //            cardNumber = cardNumber,
 //            bank= Bank(name="Aloqabank"),

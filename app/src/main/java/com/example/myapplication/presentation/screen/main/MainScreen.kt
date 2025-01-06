@@ -95,42 +95,45 @@ fun MainScreen(
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
-//                Text(
-//                    text = "City: ${cardData.bank.city?.takeIf { it.isNotBlank()} ?: "–"}",
-//                    fontSize = 16.sp
-//                )
                 Text(
                     modifier = Modifier.padding(start = 16.dp),
-                    text = "Название: ${cardData.bank.name.takeIf { it.isNotBlank()} ?: "–"}",
+                    text = "City: ${cardData.bank?.city?.takeIf { it.isNotBlank()} ?: "–"}",
+                    fontSize = 16.sp
+                )
+                Text(
+                    modifier = Modifier.padding(start = 16.dp),
+                    text = "Название: ${cardData.bank?.name?.takeIf { it.isNotBlank()} ?: "–"}",
                     fontSize = 16.sp
                 )
                 Text(
                     modifier = Modifier.padding(top = 16.dp),
-                    text = "Схема: ${cardData.scheme.takeIf { it.isNotBlank()} ?: "–"}",
+                    text = "Схема: ${cardData.scheme?.takeIf { it.isNotBlank()} ?: "–"}",
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
                 Text(
                     modifier = Modifier.padding(top = 16.dp),
-                    text = "Тип: ${cardData.type.takeIf { it.isNotBlank()} ?: "–"}",
+                    text = "Тип: ${cardData.type?.takeIf { it.isNotBlank()} ?: "–"}",
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
-//                Text(
-//                    text = "Phone: ${cardData.bank.phone.takeIf { it.isNotBlank()} ?: "–"}",
-//                    fontSize = 16.sp //TODO
-//                )
-//                Text(
-//                    text = "Url: ${cardData.bank.url.takeIf { it.isNotBlank()} ?: "–"}",
-//                    fontSize = 16.sp //TODO
-//                )
+                Text(
+                    modifier = Modifier.padding(start = 16.dp),
+                    text = "Phone: ${cardData.bank?.phone?.takeIf { it.isNotBlank()} ?: "–"}",
+                    fontSize = 16.sp
+                )
+                Text(
+                    modifier = Modifier.padding(start = 16.dp),
+                    text = "Url: ${cardData.bank?.url?.takeIf { it.isNotBlank()} ?: "–"}",
+                    fontSize = 16.sp
+                )
 
-//                Text(
-//                    modifier = Modifier.padding(start = 16.dp, top = 16.dp),
-//                    text = "Brand: ${cardData.brand.takeIf { it.isNotBlank()} ?: "–"}",
-//                    fontSize = 24.sp,
-//                    fontWeight = FontWeight.Bold
-//                )
+                Text(
+                    modifier = Modifier.padding(top = 16.dp),
+                    text = "Brand: ${cardData.brand?.takeIf { it.isNotBlank()} ?: "–"}",
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold
+                )
 
                 Text(
                     modifier = Modifier.padding( top = 16.dp),
@@ -140,57 +143,57 @@ fun MainScreen(
                 )
                 Text(
                     modifier = Modifier.padding(start = 16.dp),
-                    text = "Название: ${cardData.country.name.takeIf { it.isNotBlank()} ?: "–"}",
+                    text = "Название: ${cardData.country?.name?.takeIf { it.isNotBlank()} ?: "–"}",
                     fontSize = 16.sp
                 )
                 Text(
                     modifier = Modifier.padding(start = 16.dp),
-                    text = "Валюта: ${cardData.country.currency.takeIf { it.isNotBlank()} ?: "–"}",
+                    text = "Валюта: ${cardData.country?.currency?.takeIf { it.isNotBlank()} ?: "–"}",
                     fontSize = 16.sp
                 )
                 Text(
                     modifier = Modifier.padding(start = 16.dp),
-                    text = "Эмодзи: ${cardData.country.emoji.takeIf { it.isNotBlank()} ?: "–"}",
+                    text = "Эмодзи: ${cardData.country?.emoji?.takeIf { it.isNotBlank()} ?: "–"}",
                     fontSize = 16.sp
                 )
                 Text(
                     modifier = Modifier.padding(start = 16.dp),
-                    text = "Alpha2: ${cardData.country.alpha2.takeIf { it.isNotBlank()} ?: "–"}",
+                    text = "Alpha2: ${cardData.country?.alpha2?.takeIf { it.isNotBlank()} ?: "–"}",
                     fontSize = 16.sp
                 )
                 Text(
                     modifier = Modifier.padding(start = 16.dp),
-                    text = "Latitude: ${cardData.country.latitude.takeIf { it != 0 } ?: "–"}",
+                    text = "Latitude: ${cardData.country?.latitude.takeIf { it != 0 } ?: "–"}",
                     fontSize = 16.sp
                 )
                 Text(
                     modifier = Modifier.padding(start = 16.dp),
-                    text = "Longitude: ${cardData.country.longitude.takeIf { it != 0 } ?: "–"}",
+                    text = "Longitude: ${cardData.country?.longitude.takeIf { it != 0 } ?: "–"}",
                     fontSize = 16.sp
                 )
 
                 Text(
                     modifier = Modifier.padding(start = 16.dp),
-                    text = "Числовой: ${cardData.country.numeric.takeIf { it.isNotBlank()} ?: "–"}",
+                    text = "Числовой: ${cardData.country?.numeric?.takeIf { it.isNotBlank()} ?: "–"}",
                     fontSize = 16.sp
                 )
 
-//                Text(
-//                    text = "Length: ${cardData.number.length.takeIf { it != 0 } ?: "–"}",
-//                    fontSize = 16.sp
-//                )
-//                Text(
-//                    text = "Luhn: ${cardData.number.luhn.takeIf { it } ?: "–"}",
-//                    fontSize = 16.sp
-//                )
-//                Text(
-//                    modifier = Modifier.padding(start = 16.dp, top = 16.dp),
-//                    text = "Prepaid: ${cardData.prepaid.takeIf { it } ?: "–"}",
-//                    fontSize = 24.sp,
-//                    fontWeight = FontWeight.Bold
-//                )
-
-
+                Text(
+                    modifier = Modifier.padding(start = 16.dp),
+                    text = "Length: ${cardData.number?.length.takeIf { it != 0 } ?: "–"}",
+                    fontSize = 16.sp
+                )
+                Text(
+                    modifier = Modifier.padding(start = 16.dp),
+                    text = "Luhn: ${cardData.number?.luhn?.takeIf { it } ?: "–"}",
+                    fontSize = 16.sp
+                )
+                Text(
+                    modifier = Modifier.padding(top = 16.dp),
+                    text = "Prepaid: ${cardData.prepaid?.takeIf { it } ?: "–"}",
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold
+                )
             }
         }
     }

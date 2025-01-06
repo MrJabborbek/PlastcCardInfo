@@ -40,7 +40,7 @@ class MainViewModel(
                 if (action.value.length > 8) {
                     return
                 }
-                _state.update { it.copy(enteredCardNumber = action.value, error = null)}
+                _state.update { it.copy(enteredCardNumber = action.value, error = null, cardData = null)}
                 if (action.value.length == 8) {
                     getCardData(action.value)
                 }
@@ -48,6 +48,10 @@ class MainViewModel(
 
             MainAction.OnHistoryClicked -> {}
             MainAction.OnSearchClicked -> {
+                if (_state.value.enteredCardNumber.length < 6) {
+                    showSnackbar("Введите первые 6–8 цифр номера карты")
+                    return
+                }
                 getCardData(_state.value.enteredCardNumber)
             }
         }
@@ -63,11 +67,11 @@ class MainViewModel(
                     cardData = cardData
                 ) }
             } ?: kotlin.run {
-                showSnackbar("Данные не найдены")
+//                showSnackbar("Данные не найдены")
                 _state.update { it.copy(
                         isLoading = false,
                         cardData = null,
-                    error = "Дневной бесплатный лимит API — 5. Возможно, ваш лимит исчерпан."
+                    error = "Данные не найдены. Дневной бесплатный лимит API — 5. Возможно, ваш лимит исчерпан."
                     )
                 }
             }
