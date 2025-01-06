@@ -57,7 +57,10 @@ class MainActivity : ComponentActivity() {
                                     MainScreenRoot(
                                         viewModel = viewModel,
                                         navigateToHistory = {
-                                            navController.navigate("history")
+                                            navController.navigate("history"){
+                                                launchSingleTop = true
+                                                restoreState = true
+                                            }
                                         }
                                     )
                                 }

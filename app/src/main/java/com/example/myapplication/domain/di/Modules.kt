@@ -1,6 +1,9 @@
 package com.example.myapplication.domain.di
 
 import androidx.compose.material3.SnackbarHostState
+import androidx.sqlite.driver.bundled.BundledSQLiteDriver
+import com.example.myapplication.data.database.DatabaseFactory
+import com.example.myapplication.data.database.HistoryDatabase
 import com.example.myapplication.data.network.HttpClientFactory
 import com.example.myapplication.data.network.KtorRemoteCardDataSource
 import com.example.myapplication.data.network.RemoteCardDataSource
@@ -22,11 +25,23 @@ import org.koin.dsl.module
 
 val platformModule: Module
 get() = module {
-    single { androidApplication() }
+//    single { androidApplication() }
     single<HttpClientEngine> { OkHttp.create() }
+    single { DatabaseFactory(androidApplication()) }
+
     single { HttpClientFactory.create(get()) }
     singleOf(::KtorRemoteCardDataSource).bind<RemoteCardDataSource>()
+//    singleOf(::DefaultCardInfoRepository).bind<HistoryRepository>()
+//    single { DatabaseFactory(get()).create() }
+
     singleOf(::DefaultCardInfoRepository).binds(arrayOf( CardInfoRepository::class, HistoryRepository::class))
+    single {
+        get<DatabaseFactory>().create()
+            .setDriver(BundledSQLiteDriver())
+            .build()
+    }
+    single { get<HistoryDatabase>().dao }
+
 //    single { DialPhoneNumber(get()) }
 //    single { OpenUrlInBrowser(get()) }
 

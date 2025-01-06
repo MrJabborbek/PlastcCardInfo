@@ -40,31 +40,34 @@ class MainViewModel(
                 if (action.value.length > 8) {
                     return
                 }
-                _state.update { it.copy(enteredCardNumber = action.value)}
+                _state.update { it.copy(enteredCardNumber = action.value, error = null)}
                 if (action.value.length == 8) {
                     getCardData(action.value)
                 }
             }
 
             MainAction.OnHistoryClicked -> {}
+            MainAction.OnSearchClicked -> {
+                getCardData(_state.value.enteredCardNumber)
+            }
         }
     }
 
     private fun getCardData(cardNumber: String) {
         fetchDataJob?.cancel()
-        _state.update { it.copy(isLoading = true) }
+        _state.update { it.copy(isLoading = true, error = null) }
         fetchDataJob = viewModelScope.launch {
             cardInfoRepository.getInfoByCard(cardNumber)?.let { cardData ->
-                println("CardData: 2$cardData")
                 _state.update { it.copy(
                     isLoading = false,
                     cardData = cardData
                 ) }
             } ?: kotlin.run {
-                showSnackbar("Data not found")
+                showSnackbar("Данные не найдены")
                 _state.update { it.copy(
                         isLoading = false,
-                        cardData = null
+                        cardData = null,
+                    error = "Дневной бесплатный лимит API — 5. Возможно, ваш лимит исчерпан."
                     )
                 }
             }

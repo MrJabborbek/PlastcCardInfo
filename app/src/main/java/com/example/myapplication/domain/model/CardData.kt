@@ -4,6 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CardData(
+    val cardNumber: String = "",
     val bank: Bank,
     val country: Country,
     val number: Number,
